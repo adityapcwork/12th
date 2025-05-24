@@ -1,54 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- User Provided Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Meta refresh is kept as a fallback, set slightly longer than JS (10s) -->
+    <meta http-equiv="refresh" content="11;url=https://12th.is-best.net/">
+    <title>Site Moving - Important Notice</title>
 
-    <!-- SEO Meta Tags -->
-    <title>12th Science Maharashtra Board Textbooks PDF | PCM + CS Resources</title>
-    <meta name="description" content="Instantly view & download official 12th HSC Maharashtra State Board textbooks (PDF) for Physics, Chemistry, Maths (PCM), Computer Science (CS) and more. Essential 12th Science resources, notes, and solutions.">
-    <meta name="keywords" content="12th Science, HSC, Maharashtra Board, Textbooks, PDF, PCM, CS, Physics, Chemistry, Maths, Computer Science, HSC Resources, Maharashtra State Board, 12th Standard, Revision Notes, Solutions">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://12th.is-best.net/"> <!-- Actual URL -->
+    <!-- Preconnect hint to speed up connection to the new domain -->
+    <link rel="preconnect" href="https://12th.is-best.net/">
 
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="12th Science Maharashtra Board Resources | Textbooks, Notes, Solutions">
-    <meta property="og:description" content="Instantly view & download official 12th HSC Maharashtra State Board textbooks (PDF), revision notes, and solutions for Physics, Chemistry, Maths (PCM), Computer Science (CS) and more.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://12th.is-best.net/">
-    <meta property="og:image" content="https://12th.is-best.net/image/12thscience.png"> <!-- Ensure this image path is correct on your new domain -->
-    <meta property="og:image:alt" content="12th Science Logo">
-    <meta property="og:site_name" content="12th Science Maharashtra">
-    <meta property="og:locale" content="en_IN">
+    <!-- Google Fonts - Using Poppins for body and Rajdhani for headings -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Rajdhani:wght@400;700&display=swap');
+    </style>
 
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="12th Science Maharashtra Board Resources | Textbooks, Notes, Solutions">
-    <meta name="twitter:description" content="Instantly view & download official 12th HSC Maharashtra State Board textbooks (PDF), revision notes, and solutions for Physics, Chemistry, Maths (PCM), Computer Science (CS) and more.">
-    <meta name="twitter:image" content="https://12th.is-best.net/image/12thscience.png"> <!-- Ensure this image path is correct on your new domain -->
+    <!-- Google tag (gtag.js) - Add your Measurement ID here -->
+    <!-- REPLACE 'YOUR_GA_MEASUREMENT_ID' with your actual GA4 Measurement ID (e.g., G-XXXXXXXXXX) -->
+    <!-- If you don't want analytics, you can remove this script tag and the following one -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'YOUR_GA_MEASUREMENT_ID');
 
-    <!-- Client-side Redirect -->
-    <meta http-equiv="refresh" content="10;url=https://12th.is-best.net/">
+      // Helper function to send custom events
+      function trackEvent(eventName, eventParams = {}) {
+          if (typeof gtag === 'function') {
+              gtag('event', eventName, eventParams);
+          } else {
+              // console.warn('Analytics tracking function not available.'); // Optional: uncomment for debugging
+          }
+      }
+    </script>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap');
-
         :root {
             --bg-color: #1e1e1e;
             --card-bg-color: #2a2a2a;
             --text-color: #e0e0e0;
-            --primary-color: #4fc3f7;
-            --accent-color: #ffcc00;
+            --primary-color: #4fc3f7; /* Light blue */
+            --accent-color: #ffcc00; /* Yellow */
+            --cancel-button-bg: #1022EA; /* Red */
+            --cancel-button-hover: #c62828; /* Darker red */
             --shadow-color-dark: rgba(0, 0, 0, 0.7);
             --shadow-color-light: rgba(0,0,0, 0.3);
             --highlight-color: rgba(255, 255, 255, 0.05);
             --h1-shadow-color: #141414;
-            --shine-color: rgba(255, 255, 255, 0.1);
+            --shine-color: rgba(255, 255, 255, 0.1); /* Color for the shine effect */
+            --progress-bar-track: #555; /* Grey for bar background */
+            --progress-bar-color: var(--accent-color); /* Yellow for bar fill */
         }
 
         body {
-            font-family: 'Roboto', Arial, sans-serif;
+            font-family: 'Poppins', Arial, sans-serif; /* Using Poppins for body */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -62,19 +68,32 @@
             overflow-x: hidden;
         }
 
+        /* Initial Fade-In Animation Keyframes */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: perspective(1000px) rotateX(3deg) translateY(20px); }
+            to { opacity: 1; transform: perspective(1000px) rotateX(1deg); } /* Match the default transform */
+        }
+
         .container {
             background-color: var(--card-bg-color);
-            padding: 35px 45px;
+            padding: 35px 45px; /* Default padding */
             border-radius: 12px;
             box-shadow:
                 0 10px 30px var(--shadow-color-dark),
                 0 0 0 1px var(--highlight-color);
-            max-width: 600px;
+            max-width: 600px; /* Default max width */
             width: 90%;
+            /* Default transform state */
             transform: perspective(1000px) rotateX(1deg);
             transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
-            position: relative;
-            overflow: hidden;
+            position: relative; /* Needed for the ::before pseudo-element */
+            overflow: hidden;   /* To clip the shine effect to the card's bounds */
+            z-index: 1; /* Ensure content is above shine */
+
+            /* Apply initial fade-in animation */
+            opacity: 0; /* Start invisible */
+            animation: fadeIn 0.8s ease-out forwards;
+            animation-delay: 0.2s;
         }
 
         .container:hover {
@@ -84,12 +103,13 @@
                 0 0 0 1px var(--highlight-color);
         }
 
+        /* Shining effect */
         .container::before {
             content: "";
             position: absolute;
             top: 0;
-            left: -150%;
-            width: 70%;
+            left: -150%; /* Start off-screen to the left */
+            width: 70%;  /* Width of the shine element */
             height: 100%;
             background: linear-gradient(
                 to right,
@@ -97,44 +117,42 @@
                 var(--shine-color) 50%,
                 transparent 100%
             );
-            transform: skewX(-25deg);
-            z-index: 0;
-            animation: shine 5s ease-in-out 2s infinite;
+            transform: skewX(-25deg); /* Angle the shine */
+            z-index: 0; /* Ensure it's behind the content */
+            animation: shine 5s ease-in-out 2s infinite; /* name, duration, timing, delay, iteration */
         }
 
         @keyframes shine {
-            0% {
-                left: -150%;
-            }
-            50% {
-                left: 150%;
-            }
-            100% {
-                left: 150%;
-            }
+            0% { left: -150%; }
+            50% { left: 150%; }
+            100% { left: 150%; }
         }
 
-        .icon-container, h1, p, #countdown-message, .footer-note {
+        /* Ensure all relevant content is above the shine effect */
+        .icon-container, h1, p, #countdown-message, .footer-note,
+        .progress-bar-container, #cancel-redirect {
             position: relative;
             z-index: 1;
         }
 
+
         .icon-container {
-            margin-bottom: 25px;
+            margin-bottom: 25px; /* Default margin */
         }
 
         .icon-container svg {
-            width: 60px;
+            width: 60px; /* Default size */
             height: 60px;
             color: var(--primary-color);
         }
 
         h1 {
+            font-family: 'Rajdhani', sans-serif; /* Using Rajdhani for heading */
             color: var(--primary-color);
-            font-size: 2.2em;
-            font-weight: 900;
+            font-size: 2.2em; /* Default size */
+            font-weight: 700; /* Rajdhani imported with 700 weight */
             margin-top: 0;
-            margin-bottom: 0.7em;
+            margin-bottom: 0.7em; /* Default margin */
             letter-spacing: 1px;
             text-shadow:
                 1px 1px 0 var(--h1-shadow-color),
@@ -147,9 +165,9 @@
 
         p {
             color: var(--text-color);
-            font-size: 1.1em;
+            font-size: 1.1em; /* Default size */
             line-height: 1.6;
-            margin-bottom: 1.2em;
+            margin-bottom: 1.2em; /* Default margin */
         }
 
         a {
@@ -166,65 +184,331 @@
 
         #countdown-message {
             font-size: 1em;
-            margin-bottom: 1.5em;
+            margin-bottom: 1.5em; /* Default margin */
         }
 
         #countdown {
             font-weight: bold;
             color: var(--accent-color);
             font-size: 1.2em;
+            /* aria-live="polite" added in HTML for screen readers */
+        }
+
+        /* --- Progress Bar Styles --- */
+        .progress-bar-container {
+            width: 100%;
+            height: 8px; /* Height of the bar */
+            background-color: var(--progress-bar-track); /* Background of the track */
+            border-radius: 4px;
+            margin: 20px auto; /* Default margin */
+            overflow: hidden; /* Ensure the bar stays within the container */
+        }
+
+        .progress-bar {
+            width: 100%; /* Start full */
+            height: 100%;
+            background-color: var(--progress-bar-color); /* Use accent color for the bar */
+            border-radius: 4px;
+            /* Animation */
+            animation: progress-countdown 10s linear forwards; /* forwards keeps the final state */
+        }
+
+        /* Define the animation */
+        @keyframes progress-countdown {
+            0% { width: 100%; } /* Start full */
+            100% { width: 0%; }  /* End empty */
+        }
+
+        /* Style to pause the progress bar animation */
+        .progress-bar.stopped {
+             animation-play-state: paused;
+        }
+
+
+        /* --- Cancel Button Styles --- */
+        #cancel-redirect {
+            background-color: var(--cancel-button-bg);
+            color: white;
+            border: none;
+            padding: 10px 20px; /* Default padding */
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em; /* Default size */
+            margin-top: 15px; /* Default margin */
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            outline: none; /* Remove default outline on focus */
+        }
+
+        #cancel-redirect:hover {
+            background-color: var(--cancel-button-hover);
+        }
+
+         #cancel-redirect:focus-visible { /* Style for keyboard focus */
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        #cancel-redirect:active {
+             transform: scale(0.98); /* Slight press effect */
+        }
+
+        /* Style for disabled button */
+        #cancel-redirect:disabled,
+        #cancel-redirect.disabled {
+            background-color: #555; /* Grey out */
+            cursor: not-allowed;
+            opacity: 0.7;
+            transform: none; /* Remove active effect */
+            outline: none; /* Remove outline when disabled */
         }
 
         .footer-note {
             font-size: 0.9em;
             color: #aaa;
-            margin-top: 25px;
+            margin-top: 25px; /* Default margin */
         }
+
+
+        /* --- Responsive Adjustments for Small Screens (max-width) --- */
+        @media (max-width: 480px) {
+            body {
+                font-size: 0.95em; /* scales everything down slightly */
+                padding: 15px; /* Reduce body padding */
+            }
+
+            .container {
+                padding: 30px 20px; /* Reduce horizontal padding */
+            }
+
+            h1 {
+                font-size: 1.8em; /* Further reduce the heading size */
+                margin-bottom: 0.5em;
+            }
+
+            .icon-container {
+                 margin-bottom: 20px; /* Reduce space below icon */
+            }
+
+            p {
+                 margin-bottom: 1em; /* Reduce space below paragraphs */
+            }
+
+            #countdown-message {
+                margin-bottom: 1em; /* Reduce space below countdown message */
+            }
+
+             .progress-bar-container {
+                margin: 15px auto; /* Adjust margin for the progress bar */
+            }
+
+             #cancel-redirect {
+                padding: 8px 15px; /* Slightly smaller button padding */
+                font-size: 0.95em; /* Slightly smaller button text */
+                margin-top: 10px; /* Reduce space above button */
+            }
+
+            .footer-note {
+                margin-top: 20px; /* Adjust space above footer note */
+            }
+
+            .icon-container svg {
+                 width: 50px; /* Make icon slightly smaller */
+                 height: 50px;
+            }
+        }
+
+        /* --- Responsive Adjustments for Larger Screens (min-width) --- */
+        @media (min-width: 768px) {
+             .container {
+                max-width: 800px; /* Allow container to be wider on desktop */
+                padding: 40px 60px; /* Increase padding for more breathing room */
+            }
+
+            h1 {
+                font-size: 2.6em; /* Optionally increase heading size slightly */
+            }
+
+            p {
+                font-size: 1.15em; /* Optionally increase body font size slightly */
+            }
+
+            .icon-container {
+                 margin-bottom: 30px; /* More space below icon */
+            }
+
+            p {
+                 margin-bottom: 1.5em; /* More space below paragraphs */
+            }
+
+            #countdown-message {
+                margin-bottom: 2em; /* More space below countdown */
+            }
+
+             .progress-bar-container {
+                margin: 25px auto; /* Adjust margin for the progress bar */
+            }
+
+             #cancel-redirect {
+                padding: 12px 25px; /* Larger button padding */
+                font-size: 1.1em; /* Larger button text */
+                margin-top: 20px; /* More space above button */
+            }
+
+            .footer-note {
+                margin-top: 30px; /* More space above footer */
+            }
+
+             .icon-container svg {
+                 width: 70px; /* Make icon slightly larger */
+                 height: 70px;
+            }
+        }
+
+
+        /* --- Reduced Motion Media Query --- */
+        @media (prefers-reduced-motion: reduce) {
+            .container {
+                transform: none !important;
+                animation: none !important;
+                opacity: 1 !important;
+                transition: none !important;
+            }
+
+            .container::before {
+                animation: none !important;
+                display: none; /* Hide shine */
+            }
+
+            .progress-bar {
+                animation: none !important;
+            }
+            .progress-bar-container {
+                 display: none; /* Hide bar */
+            }
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
         <div class="icon-container">
+            <!-- Standard SVG icon for moving -->
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
             </svg>
         </div>
-        <h1>Important: We Are Moving!</h1> <!-- This H1 clearly states the page purpose -->
+        <h1>Important: We Have Moved!</h1>
         <p>
             Our website has transitioned to a new domain. We appreciate your understanding.
         </p>
+
+        <!-- Countdown message with aria-live for accessibility -->
         <p id="countdown-message">
             You will be automatically redirected to
             <strong><a href="https://12th.is-best.net/" aria-label="Go to new domain 12th.is-best.net">12th.is-best.net</a></strong>
-            in <span id="countdown">10</span> seconds.
+            in <span id="countdown" aria-live="polite">10</span> seconds.
         </p>
+
+        <!-- Progress Bar Element -->
+        <div class="progress-bar-container">
+            <div class="progress-bar"></div>
+        </div>
+
+        <!-- Cancel Redirection Button -->
+        <button id="cancel-redirect">Cancel Redirection</button>
+
+        <!-- Manual link fallback -->
         <p class="footer-note">
             If the redirection doesn't occur, please
             <a href="https://12th.is-best.net/" aria-label="Manually go to new domain 12th.is-best.net">click here</a>.
         </p>
+
     </div>
 
     <script>
         (function() {
             const targetUrl = "https://12th.is-best.net/";
-            let secondsLeft = 10;
-            const countdownElement = document.getElementById('countdown');
+            const initialSeconds = 10;
+            let secondsLeft = initialSeconds;
 
-            function updateCountdown() {
-                countdownElement.textContent = secondsLeft;
+            const countdownElement = document.getElementById('countdown');
+            const countdownMessageElement = document.getElementById('countdown-message');
+            const cancelButton = document.getElementById('cancel-redirect');
+            const progressBar = document.querySelector('.progress-bar');
+
+            let intervalId = null;
+
+            // Helper function for analytics event tracking (uses window.trackEvent defined in <head>)
+            function trackRedirectEvent(eventName, eventParams = {}) {
+                if (typeof window.trackEvent === 'function') {
+                    window.trackEvent(eventName, eventParams);
+                }
+                // console.log(`Track Event: ${eventName}`, eventParams); // Optional: for local testing
             }
 
-            updateCountdown();
 
-            const intervalId = setInterval(function() {
-                secondsLeft--;
-                updateCountdown();
-
-                if (secondsLeft < 0) {
-                    clearInterval(intervalId);
-                    window.location.href = targetUrl;
+            function updateCountdown() {
+                if (countdownElement) {
+                    countdownElement.textContent = secondsLeft;
                 }
-            }, 1000);
+            }
+
+            function startCountdown() {
+                 intervalId = setInterval(function() {
+                    secondsLeft--;
+                    updateCountdown();
+
+                    if (secondsLeft < 0) {
+                        clearInterval(intervalId); // Stop the timer
+                        if (progressBar) {
+                             progressBar.style.width = '0%'; // Ensure width is 0
+                             progressBar.classList.add('stopped'); // Ensure animation state is stopped
+                        }
+                        // Note: Tracking a redirect event right before navigation
+                        // can sometimes be unreliable. Pageviews on the destination
+                        // site are usually a better way to confirm successful redirects.
+                        window.location.href = targetUrl; // Perform the redirect
+                    }
+                }, 1000); // Decrement every 1000ms (1 second)
+            }
+
+            // Initialize countdown display and start timer
+            updateCountdown();
+            startCountdown();
+
+            // Add event listener to the cancel button
+            if (cancelButton) {
+                cancelButton.addEventListener('click', function() {
+                    clearInterval(intervalId); // Stop the JavaScript countdown timer
+
+                    // Track the cancel event
+                    trackRedirectEvent('redirect_cancelled', {
+                        'old_url': window.location.href,
+                        'new_url': targetUrl,
+                        'seconds_remaining': secondsLeft >= 0 ? secondsLeft : 0 // Log seconds left when cancelled
+                    });
+
+                    // Pause and hide the CSS progress bar animation
+                    if (progressBar) {
+                         progressBar.classList.add('stopped');
+                    }
+                    const progressBarContainer = document.querySelector('.progress-bar-container');
+                    if(progressBarContainer) {
+                         progressBarContainer.style.display = 'none';
+                    }
+
+                    // Update the countdown message
+                    if (countdownMessageElement) {
+                         countdownMessageElement.innerHTML = 'Redirection cancelled. Please <a href="' + targetUrl + '" aria-label="Manually go to new domain ' + targetUrl + '">click here</a> to proceed.';
+                    }
+
+                    // Update the button state
+                    cancelButton.textContent = 'Redirection Cancelled';
+                    cancelButton.classList.add('disabled');
+                    cancelButton.disabled = true; // Disable the button effectively
+                });
+            }
+
         })();
     </script>
 </body>
